@@ -2,7 +2,7 @@ Important Message: If we want to try git pull then create your own repo and clon
 try using git pull to see the latest change in the cloned repo.
 
 Step1: Make a practice or demo repo 
-Step2: clone this demo repo locally in another file like test-clone-pull (something like that)
+Step2: clone this demo repo locally in another folder like test-clone-pull (something like that)
 step3: after cloning use git pull origin main command 
 
 The one who clone's this repo will see this .txt file soon
