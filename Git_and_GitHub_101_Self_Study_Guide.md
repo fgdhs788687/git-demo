@@ -402,7 +402,7 @@ Create a file:
 ```bash
 echo "print('Hello Git')" > hello.py
 ```
-
+Note: When creating file like this using echo "print.....hello.py it changes the UTF from UTF 8 to UTF 16 python file doesn't run on this encoding so change it back to utf-8 as this is the ideal and correct one.
 ### Windows PowerShell
 
 ```powershell
