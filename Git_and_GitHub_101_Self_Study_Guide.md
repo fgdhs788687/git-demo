@@ -419,6 +419,8 @@ Create a file:
 
 You can also simply create `hello.py` using Cursor.
 
+Note: When creating file like this using echo "print.....hello.py it changes the UTF from UTF 8 to UTF 16 python file doesn't run on this encoding so change it back to utf-8 as this is the ideal and correct one. 
+This usually happens if the file was created using PowerShell's Out-File or > redirection commands, or if it was saved incorrectly in a text editor.
 Now initialize Git:
 
 ```bash
