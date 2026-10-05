@@ -5,3 +5,6 @@
 
 For more information please check out this repo by ed donner:
 > repo: https://github.com/ed-donner/llm_engineering.git
+
+wanna learn Git by tutorial:
+> YT-link: https://youtu.be/h2a3Kw-I_Ec?si=cIN7D8JNPTfCHs1n
