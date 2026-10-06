@@ -18,7 +18,7 @@
 10. [The .gitignore File](#10-the-gitignore-file)
 11. [Pushing to GitHub](#11-pushing-to-github)
 12. [Quick Reference Cheat Sheet](#12-quick-reference-cheat-sheet)
-13. [HEAD & main Movement — Single Visualization](#13-head-&-main-movemment-single-visualization)
+13. [HEAD & main Movement — Single Visualization](#13-head-&-main-movemment---single-visualization)
 
 ---
 
