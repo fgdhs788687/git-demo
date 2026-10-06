@@ -755,4 +755,168 @@ After `-u`, future pushes are just `git push`.
 
 ---
 
+##  HEAD & main Movement:
+# 📊 HEAD & main Movement — Single Visualization
+
+```
+STEP 0: Fresh repo, no commits
+─────────────────────────────────────────────────────────
+
+     (nothing yet)
+     
+     HEAD → main → ∅
+
+
+
+STEP 1: First commit (A)
+─────────────────────────────────────────────────────────
+
+     ┌─────────┐
+     │    A    │
+     └─────────┘
+          ▲
+          │
+        HEAD
+        main
+
+     git commit -m "first"
+     → main and HEAD both point to A
+
+
+
+STEP 2: Second commit (B)
+─────────────────────────────────────────────────────────
+
+     ┌─────────┐     ┌─────────┐
+     │    B    │────▶│    A    │
+     └─────────┘     └─────────┘
+          ▲
+          │
+        HEAD
+        main
+
+     git commit -m "second"
+     → main and HEAD both move forward to B
+     → A is still there, B points back to A
+
+
+
+STEP 3: Third commit (C)
+─────────────────────────────────────────────────────────
+
+     ┌─────────┐     ┌─────────┐     ┌─────────┐
+     │    C    │────▶│    B    │────▶│    A    │
+     └─────────┘     └─────────┘     └─────────┘
+          ▲
+          │
+        HEAD
+        main
+
+     git commit -m "third"
+     → main and HEAD both move forward to C
+
+
+
+STEP 4: Create a new branch (feature) and switch to it
+─────────────────────────────────────────────────────────
+
+     ┌─────────┐     ┌─────────┐     ┌─────────┐
+     │    C    │────▶│    B    │────▶│    A    │
+     └─────────┘     └─────────┘     └─────────┘
+          ▲
+          │
+        main
+
+        HEAD
+       feature  ← new branch created at C
+                  git switch -c feature
+
+
+
+STEP 5: Commit D on feature branch
+─────────────────────────────────────────────────────────
+
+     ┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
+     │    D    │────▶│    C    │────▶│    B    │────▶│    A    │
+     └─────────┘     └─────────┘     └─────────┘     └─────────┘
+          ▲               ▲
+          │               │
+        HEAD            main
+       feature
+
+     git commit -m "D on feature"
+     → HEAD and feature move to D
+     → main stays at C (did NOT move)
+
+
+
+STEP 6: Switch back to main
+─────────────────────────────────────────────────────────
+
+     ┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
+     │    D    │────▶│    C    │────▶│    B    │────▶│    A    │
+     └─────────┘     └─────────┘     └─────────┘     └─────────┘
+          ▲               ▲
+          │               │
+       feature          HEAD
+                        main
+
+     git switch main
+     → HEAD moves to main (which is at C)
+     → feature still points to D
+
+
+
+STEP 7: Merge feature into main
+─────────────────────────────────────────────────────────
+
+     ┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
+     │    D    │────▶│    C    │────▶│    B    │────▶│    A    │
+     └─────────┘     └─────────┘     └─────────┘     └─────────┘
+          ▲               ▲
+          │               │
+       feature          HEAD
+                        main
+
+     git merge feature (fast-forward)
+     → main moves forward to D
+     → HEAD moves with main
+
+     ┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
+     │    D    │────▶│    C    │────▶│    B    │────▶│    A    │
+     └─────────┘     └─────────┘     └─────────┘     └─────────┘
+          ▲
+          │
+        HEAD
+        main
+       feature
+```
+
+---
+
+## 🧠 The Simple Rule
+
+| Thing | What it is | When does it move? |
+|---|---|---|
+| **HEAD** | Pointer to "where you are now" | Moves when you `switch`, `checkout`, or commit |
+| **main** (branch) | Pointer to the latest commit on that branch | Moves **only** when you commit **while on that branch** |
+| **feature** (branch) | Same as main, but for another line of work | Moves only when you commit while on it |
+
+**One-liner:**
+> `HEAD` follows **you**. Branch pointers (`main`, `feature`) follow **their own commits**. When you commit, both `HEAD` and the current branch move together — but only the branch you're standing on.
+
+---
+
+## ⚡ Movement Summary Table
+
+| Action | HEAD moves? | main moves? | feature moves? |
+|---|---|---|---|
+| `git commit` on main | ✅ to new commit | ✅ to new commit | ❌ stays |
+| `git commit` on feature | ✅ to new commit | ❌ stays | ✅ to new commit |
+| `git switch feature` | ✅ to feature | ❌ stays | ❌ stays |
+| `git switch main` | ✅ to main | ❌ stays | ❌ stays |
+| `git merge feature` (on main) | ✅ to new commit | ✅ to new commit | ❌ stays |
+
+That's the whole picture. 🎯
+
 *Happy Git-ing! 🚀*
