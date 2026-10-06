@@ -151,7 +151,7 @@ fatal: pathspec 'style.html' did not match any files
 ```
 Git tells you the file doesn't exist. Double-check your filenames.
 
-> To solve this write the correct file name after git add <filename> <filename>
+> To solve this write the correct file name after like this git add index.html style.css
 
 ### Check status — staged
 
