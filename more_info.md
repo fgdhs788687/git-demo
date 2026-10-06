@@ -233,6 +233,13 @@ Correct is `--staged` (or `--cached`).
 | `git diff --staged` | Staging area vs. last commit |
 | `git diff HEAD` | Working tree vs. last commit |
 
+### So:
+        - You edit a file → git diff shows it.
+        - You run git add → git diff goes empty, git diff --staged shows it.
+        - You git commit → both go empty (until you edit again).
+
+> That's the flow. ✅
+
 ### `git log` — full history
 
 ```bash
