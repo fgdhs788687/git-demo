@@ -241,9 +241,19 @@ Correct is `--staged` (or `--cached`).
 > That's the flow. ✅
 
 ## What is Head:
-1. In Git, HEAD is a dynamic pointer that represents your current active location in the repository. Think of it like a "You Are Here" needle on a compass or a bookmark in a book. It tells Git which branch or commit you are currently looking at and editing.
-2. Here is exactly how HEAD, main, and your commits fit together.
-        - While main is a pointer to the latest commit on your primary development line, HEAD is a pointer to a pointer. Under normal circumstances, HEAD does not point directly to a commit. Instead, HEAD points to the active branch name, and the branch name points to           the latest commit.
+In Git, HEAD is a dynamic pointer that represents your current active location in the repository. Think of it like a "You Are Here" needle on a compass or a bookmark in a book. It tells Git which branch or commit you are currently looking at and editing.
+### Here is exactly how HEAD, main, and your commits fit together.
+        While main is a pointer to the latest commit on your primary development line, HEAD is a pointer to a pointer. Under normal circumstances, HEAD does not point directly to a commit. Instead, HEAD points to the active branch name, and the branch name points to           the latest commit.
+
+         [ HEAD ] 
+            │
+            ▼
+         [ main ] ──► [ Commit A ] ──► [ Commit B (Latest) ]
+
+         When you save your work and type git commit, Git looks at HEAD to see where you are. Because HEAD points to main, Git knows to add the new commit to the main branch, and then both main and HEAD move forward together.
+         
+## Why does HEAD point toward main?
+HEAD points toward main simply because main is the branch you currently have checked out.
 
 ### `git log` — full history
 
