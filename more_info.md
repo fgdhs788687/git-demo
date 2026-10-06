@@ -18,6 +18,7 @@
 10. [The .gitignore File](#10-the-gitignore-file)
 11. [Pushing to GitHub](#11-pushing-to-github)
 12. [Quick Reference Cheat Sheet](#12-quick-reference-cheat-sheet)
+13. [HEAD & main Movement — Single Visualization](#-head-&-main-movemment-single-visualization)
 
 ---
 
@@ -755,8 +756,8 @@ After `-u`, future pushes are just `git push`.
 
 ---
 
-##  HEAD & main Movement:
-# 📊 HEAD & main Movement — Single Visualization
+
+# 13. HEAD & main Movement — Single Visualization
 
 ```
 STEP 0: Fresh repo, no commits
